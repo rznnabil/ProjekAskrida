@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Absensi Ruangan TU</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistem Absensi Ruangan TU</h1>
+            <p class="subtitle">Kelola data anggota dan absensi dengan mudah</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('absensi')">Absensi</button>
+            <button class="tab-button" onclick="showTab('anggota')">Data Anggota</button>
+            <button class="tab-button" onclick="showTab('riwayat')">Riwayat</button>
+        </div>
+
+        <!-- Absensi Tab -->
+        <div id="absensi" class="tab-content active">
+            <div class="card">
+                <h2>Absensi Masuk/Keluar</h2>
+                <form id="absensiForm">
+                    <div class="form-group">
+                        <label for="keyAbsensi">Key/ID Anggota:</label>
+                        <input type="text" id="keyAbsensi" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Absensi</button>
+                </form>
+                <div id="absensiResult" class="result-message"></div>
+            </div>
+
+            <div class="card">
+                <h2>Cek Status Absensi Batch</h2>
+                <form id="cekAbsensiForm">
+                    <div class="form-group">
+                        <label for="keysAbsensi">Keys (pisahkan dengan koma):</label>
+                        <textarea id="keysAbsensi" rows="3" placeholder="Contoh: key1, key2, key3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Cek Status</button>
+                </form>
+                <div id="cekAbsensiResult" class="result-message"></div>
+            </div>
+        </div>
+
+        <!-- Data Anggota Tab -->
+        <div id="anggota" class="tab-content">
+            <div class="card">
+                <h2>Tambah Anggota Baru</h2>
+                <form id="tambahAnggotaForm">
+                    <div class="form-group">
+                        <label for="keyAnggota">Key/ID:</label>
+                        <input type="text" id="keyAnggota" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="namaAnggota">Nama:</label>
+                        <input type="text" id="namaAnggota" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kelasAnggota">Kelas:</label>
+                        <input type="text" id="kelasAnggota" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="divisiAnggota">ID Divisi:</label>
+                        <input type="number" id="divisiAnggota" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tambah Anggota</button>
+                </form>
+                <div id="tambahAnggotaResult" class="result-message"></div>
+            </div>
+
+            <div class="card">
+                <h2>Update Data Anggota</h2>
+                <form id="updateAnggotaForm">
+                    <div class="form-group">
+                        <label for="keyAnggotaUpdate">Key/ID:</label>
+                        <input type="text" id="keyAnggotaUpdate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="namaAnggotaUpdate">Nama Baru:</label>
+                        <input type="text" id="namaAnggotaUpdate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kelasAnggotaUpdate">Kelas Baru:</label>
+                        <input type="text" id="kelasAnggotaUpdate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="divisiAnggotaUpdate">ID Divisi Baru:</label>
+                        <input type="number" id="divisiAnggotaUpdate" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Update Anggota</button>
+                </form>
+                <div id="updateAnggotaResult" class="result-message"></div>
+            </div>
+
+            <div class="card">
+                <h2>Tambah Anggota Batch</h2>
+                <form id="tambahBatchForm">
+                    <div class="form-group">
+                        <label for="jsonBatch">Data JSON (Array):</label>
+                        <textarea id="jsonBatch" rows="6" placeholder='[{"key":"key1","nama":"Nama 1","kelas":"Kelas 1","idDivisi":1},{"key":"key2","nama":"Nama 2","kelas":"Kelas 2","idDivisi":2}]'></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Tambah Batch</button>
+                </form>
+                <div id="tambahBatchResult" class="result-message"></div>
+            </div>
+        </div>
+
+        <!-- Riwayat Tab -->
+        <div id="riwayat" class="tab-content">
+            <div class="card">
+                <h2>Riwayat Absensi</h2>
+                <button onclick="loadRiwayat()" class="btn btn-primary">Muat Riwayat</button>
+                <div id="riwayatTable"></div>
+            </div>
+
+            <div class="card">
+                <h2>Hapus Data</h2>
+                <form id="hapusDataForm">
+                    <div class="form-group">
+                        <label for="idHapus">ID Data yang akan dihapus:</label>
+                        <input type="number" id="idHapus" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Hapus Data</button>
+                </form>
+                <div id="hapusDataResult" class="result-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Sistem Absensi Ruangan TU &copy; 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
