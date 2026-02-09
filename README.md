@@ -142,25 +142,10 @@ Backend menyediakan REST API berikut:
 - Verifikasi URL di `script.js` sesuai dengan backend URL
 
 ### Error CORS
-Jika mendapat error CORS, tambahkan konfigurasi berikut di backend:
-
-Buat file `CorsConfig.java` di `com.askrida.web.service.conf`:
-```java
-@Configuration
-public class CorsConfig {
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                    .allowedOrigins("*")
-                    .allowedMethods("GET", "POST", "PUT", "DELETE");
-            }
-        };
-    }
-}
-```
+CORS sudah dikonfigurasi di backend (`CorsConfig.java`). Jika untuk production, disarankan untuk:
+- Ganti `allowedOrigins("*")` dengan domain spesifik (contoh: `allowedOrigins("http://localhost:8080")`)
+- Implementasi autentikasi dan authorization
+- Tambahkan security headers
 
 ## Pengembangan
 
