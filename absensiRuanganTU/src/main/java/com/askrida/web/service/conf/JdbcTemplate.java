@@ -7,7 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -20,7 +21,7 @@ import com.askrida.web.service.common.DTOMap;
 
 
 public class JdbcTemplate extends org.springframework.jdbc.core.JdbcTemplate {
-	protected Logger log = Logger.getLogger(this.getClass());
+	protected Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	public JdbcTemplate(DriverManagerDataSource ds) {
 		super(ds);
