@@ -1,0 +1,15 @@
+# Compiled class files and build artifacts
+absensiRuanganTU/target/
+absensiRuanganTU/bin/
+
+# Maven
+.mvn/
+
+# IDE files
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
